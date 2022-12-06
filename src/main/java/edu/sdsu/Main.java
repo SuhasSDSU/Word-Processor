@@ -8,14 +8,13 @@ public class Main {
       /**
        *
        * Run Array will have a method that would be looking to
-       * add contents
-       * so we need to store font information in a list
+       * add contents, so we need to store font information in a list
        * the font information that we need is triplet as mentioned in the assignment
        *
        * We need flyweight for font as well as the character
        */
 
       RunArray test = new RunArray();
-//      test
+
    }
 }
