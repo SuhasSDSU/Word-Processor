@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/core-java-performance-examples/sandbox/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/core-java-performance-examples/sandbox/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/core-java-performance-examples/trunk/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/core-java-performance-examples/trunk/src/test/java" />
+    </SOURCES>
+  </library>
+</component>
