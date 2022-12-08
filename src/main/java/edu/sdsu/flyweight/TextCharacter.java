@@ -15,6 +15,6 @@ public class TextCharacter implements IFlyweight{
    }
    @Override
    public void setFont(Font font) {
-
+      System.out.println("{TextCharacter: "+this+"} {Unicode: "+this.uniCode+"} {Font: "+font+"}");
    }
 }

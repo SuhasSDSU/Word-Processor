@@ -13,7 +13,7 @@ import java.util.Map;
 * */
 public class FontFactory {
    private Map<String, Font> cache = new HashMap<>();
-   private static FontFactory aFontFactory;
+   private static FontFactory fontFactory;
    public Font getFont(String fontName,int fontStyle,int fontSize) {
       if (!cache.containsKey(fontName+fontStyle+fontSize)) {
          cache.put(fontName + fontStyle + fontSize, new Font(fontName, fontStyle, fontSize));
@@ -21,7 +21,7 @@ public class FontFactory {
       return cache.get(fontName+fontStyle+fontSize);
    }
    public static FontFactory getFontFactoryInstance(){
-      if(aFontFactory == null) aFontFactory = new FontFactory();
-      return aFontFactory;
+      if(fontFactory == null) fontFactory = new FontFactory();
+      return fontFactory;
    }
 }

@@ -10,21 +10,21 @@ import java.util.Map;
 * */
 public class CharacterFactory {
    private Map<Character, TextCharacter> characterMap = new HashMap<>();
-   private static CharacterFactory aTextCharacterFactory;
+   private static CharacterFactory characterFactory;
 
    private CharacterFactory(){}
 
   public TextCharacter getFlyWeightCharacter(Character unicode){
-     TextCharacter aTextCharacter = characterMap.get(unicode);
-     if(aTextCharacter == null){
-        aTextCharacter = new TextCharacter(unicode);
-        characterMap.put(unicode,aTextCharacter);
+     TextCharacter character = characterMap.get(unicode);
+     if(character == null){
+        character = new TextCharacter(unicode);
+        characterMap.put(unicode,character);
      }
-     return aTextCharacter;
+     return character;
   }
    public static CharacterFactory getCharacterFactoryInstance(){
-      if(aTextCharacterFactory == null)
-         aTextCharacterFactory = new CharacterFactory();
-      return aTextCharacterFactory;
+      if(characterFactory == null)
+         characterFactory = new CharacterFactory();
+      return characterFactory;
    }
 }
