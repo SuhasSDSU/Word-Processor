@@ -3,11 +3,6 @@ package edu.sdsu.flyweight;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-* You need a Flyweight factory that
-* given a unicode code point (a char in Java) returns
-* the Flyweight character object for the character
-* */
 public class CharacterFactory {
    private Map<Character, TextCharacter> characterMap = new HashMap<>();
    private static CharacterFactory characterFactory;

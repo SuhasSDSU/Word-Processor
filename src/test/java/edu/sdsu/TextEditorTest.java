@@ -25,4 +25,10 @@ public class TextEditorTest {
       Font actualValue = test.getFont(20);
       assertEquals(times_new_roman, actualValue);
    }
+
+   @Test
+   @DisplayName("Memory Calculations")
+   public void checkMemoryConsumption(){
+
+   }
 }
