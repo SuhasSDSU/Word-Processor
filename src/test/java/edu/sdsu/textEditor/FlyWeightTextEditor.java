@@ -30,11 +30,11 @@ public class FlyWeightTextEditor {
 
          @Override
          protected int create() {
-            characterList = new ArrayList<TextCharacter>();
+            characterList = new ArrayList<>();
 
-            FontFactory aFontFactory = FontFactory.getFontFactoryInstance();
-            Font fontOne = aFontFactory.getFont("TIMES NEW ROMAN", Font.ITALIC, 10);
-            Font fontTwo = aFontFactory.getFont("ARIAL", Font.BOLD, 12);
+            FontFactory fontFactory = FontFactory.getFontFactoryInstance();
+            Font fontOne = fontFactory.getFont("TIMES NEW ROMAN", Font.ITALIC, 10);
+            Font fontTwo = fontFactory.getFont("ARIAL", Font.BOLD, 12);
 
             RunArray runArray = new RunArray();
             runArray.addRun(0, 115, fontOne); // 0 -- 114
@@ -42,10 +42,10 @@ public class FlyWeightTextEditor {
 
 
             for (int i = 0; i < textArray.length; i++) {
-               CharacterFactory aTextCharacterFactory = CharacterFactory.getCharacterFactoryInstance();
-               TextCharacter aTextCharacter = aTextCharacterFactory.getFlyWeightCharacter(textArray[i]); //unicode
-               if (!characterList.contains(aTextCharacter))
-                  characterList.add(aTextCharacter);
+               CharacterFactory characterFactory = CharacterFactory.getCharacterFactoryInstance();
+               TextCharacter flyWeightCharacter = characterFactory.getFlyWeightCharacter(textArray[i]); //unicode
+               if (!characterList.contains(flyWeightCharacter))
+                  characterList.add(flyWeightCharacter);
             }
             return 1;
          }

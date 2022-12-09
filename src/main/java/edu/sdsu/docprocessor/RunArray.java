@@ -5,12 +5,9 @@ import edu.sdsu.flyweight.FontInfo;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class RunArray {
-
-   // this would list type should change later on
    private List<FontInfo> fontInfos;
    private int endIndex;
 
@@ -23,16 +20,10 @@ public class RunArray {
    }
 
    public Font getFont(int index){
-      Iterator<FontInfo> iterator = fontInfos.iterator();
-      while(iterator.hasNext()){
-         FontInfo aFontInfo = iterator.next();
-         // font found
-         if(aFontInfo.contains(index)){
-            return aFontInfo.getCharacterFont();
-         }
-      }
-      // no font found
-      return null;
+      return fontInfos.stream()
+            .filter(fontInfo-> fontInfo.contains(index))
+            .findFirst()
+            .orElse(null).getCharacterFont();
    }
    public void appendRun(int run, Font font ){
       int startIndex = endIndex+1;

@@ -11,9 +11,9 @@ public class TextEditorTest {
    @Test
    @DisplayName("Test Font Information in the Run Array")
    public void shouldBeTimesNewRoman(){
-      FontFactory aFontFactory = FontFactory.getFontFactoryInstance();
-      Font times_new_roman = aFontFactory.getFont("TIMES NEW ROMAN",Font.ITALIC,10);
-      Font arial = aFontFactory.getFont("ARIAL",Font.BOLD,12);
+      FontFactory factoryInstance = FontFactory.getFontFactoryInstance();
+      Font times_new_roman = factoryInstance.getFont("TIMES NEW ROMAN",Font.ITALIC,10);
+      Font arial = factoryInstance.getFont("ARIAL",Font.BOLD,12);
 
       RunArray test = new RunArray();
       test.addRun(0, 3,times_new_roman);

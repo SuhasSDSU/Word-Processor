@@ -14,9 +14,8 @@ public abstract class SizeCalculation {
          int number = create();
          long used2 = memoryUsed(runtime);
          double avgSize = (double) (used2 - used1) / number;
-//            System.out.println(avgSize);
+
          if (avgSize < 0) {
-            // GC was performed.
             i--;
             if (retries-- < 0)
                throw new RuntimeException("The eden space is not large enough to hold all the objects.");

@@ -12,16 +12,6 @@ public class NormalTextEditor {
       System.out.println("~~~~~~~~~~~~~~~Without Flyweight~~~~~~~~~~~~~~~");
 
       System.out.printf("The average size of NormalCharacterWithFont is %.10f bytes%n", new SizeCalculation() {
-         /***
-          * From Assignment -->
-          * CS 635 Advanced Object-Oriented Design & Programming
-          * Fall Semester, 2018
-          * Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object
-          * Nov 19, 2019
-          * Copyright ©, All rights reserved. 2019 SDSU & Roger Whitney, 5500 Campanile Drive, San
-          * Diego, CA 92182-7700 USA. OpenContent (http://www.opencontent.org/opl.shtml) license de-
-          * fines the copyright on this document.
-          */
          final String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
                "Fall Semester, 2018\n" +
                "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
