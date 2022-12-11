@@ -29,8 +29,8 @@ public class NormalTextEditor {
          protected int create() {
             characterList = new ArrayList<>();
             for (char c : textArray) {
-               Font fontA = new Font("Arial", Font.BOLD, 12);
-               CharacterAndFont aCharacter = new CharacterAndFont(c, fontA);
+               Font arial = new Font("Arial", Font.BOLD, 12);
+               CharacterAndFont aCharacter = new CharacterAndFont(c, arial);
                characterList.add(aCharacter);
             }
             return 1;

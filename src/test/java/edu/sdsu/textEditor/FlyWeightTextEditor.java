@@ -33,12 +33,12 @@ public class FlyWeightTextEditor {
             characterList = new ArrayList<>();
 
             FontFactory fontFactory = FontFactory.getFontFactoryInstance();
-            Font fontOne = fontFactory.getFont("TIMES NEW ROMAN", Font.ITALIC, 10);
-            Font fontTwo = fontFactory.getFont("ARIAL", Font.BOLD, 12);
+            Font timesNewRoman = fontFactory.getFont("TIMES NEW ROMAN", Font.ITALIC, 10);
+            Font arial = fontFactory.getFont("ARIAL", Font.BOLD, 12);
 
             RunArray runArray = new RunArray();
-            runArray.addRun(0, 115, fontOne); // 0 -- 114
-            runArray.addRun(115, 211, fontTwo); // 114- 325
+            runArray.addRun(0, 115, timesNewRoman); // 0 -- 114
+            runArray.addRun(115, 211, arial); // 114- 325
 
 
             for (int i = 0; i < textArray.length; i++) {

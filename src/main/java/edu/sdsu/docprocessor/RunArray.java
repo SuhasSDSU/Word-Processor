@@ -21,7 +21,7 @@ public class RunArray {
 
    public Font getFont(int index){
       return fontInfos.stream()
-            .filter(fontInfo-> fontInfo.contains(index))
+            .filter(fontInfo-> fontInfo.hasFont(index))
             .findFirst()
             .orElse(null).getCharacterFont();
    }

@@ -2,7 +2,7 @@ package edu.sdsu.docprocessor;
 
 import java.awt.*;
 
-// Class to create character objects which contains both font and unicode within itself.
+// Class to create character objects which hasFont both font and unicode within itself.
 public class CharacterAndFont {
    char unicode;
    Font font;

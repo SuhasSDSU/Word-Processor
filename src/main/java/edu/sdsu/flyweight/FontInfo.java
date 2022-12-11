@@ -13,16 +13,8 @@ public class FontInfo {
       this.endIndex = endIndex;
    }
 
-   public boolean contains(int index){
+   public boolean hasFont(int index){
       return (index >= startIndex && index <= endIndex);
-   }
-
-   public int getStartIndex() {
-      return startIndex;
-   }
-
-   public int getEndIndex() {
-      return endIndex;
    }
 
    public Font getCharacterFont() {
