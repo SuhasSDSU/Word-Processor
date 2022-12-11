@@ -1,4 +1,4 @@
-package edu.sdsu.textEditor;
+package edu.sdsu.flyweightTest;
 
 import edu.sdsu.docprocessor.RunArray;
 import edu.sdsu.flyweight.CharacterFactory;
@@ -6,8 +6,9 @@ import edu.sdsu.flyweight.FontFactory;
 import edu.sdsu.flyweight.TextCharacter;
 import edu.sdsu.util.SizeCalculation;
 
-import java.awt.*;
+import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FlyWeightTextEditor {
    public static void main(String args[]) {
@@ -25,7 +26,7 @@ public class FlyWeightTextEditor {
                "fines the copyright on this document.";
 
 
-         ArrayList<TextCharacter> characterList = null;
+         List<TextCharacter> characterList = null;
          final char[] textArray = text.toCharArray();
 
          @Override

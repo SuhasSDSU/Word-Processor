@@ -1,0 +1,46 @@
+package edu.sdsu.util;
+
+import edu.sdsu.docprocessor.CharacterAndFont;
+import edu.sdsu.util.SizeCalculation;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SizeCalculator {
+
+      public static void getObjectSize(){
+         System.out.printf("The average size of a Character array is %.1f bytes%n", new SizeCalculation() {
+           final String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
+                  "Fall Semester, 2018\n" +
+                  "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
+                  "Nov 19, 2019\n" +
+                  "Copyright ©, All rights reserved. 2019 SDSU & Roger Whitney, 5500 Campanile Drive, San\n" +
+                  "Diego, CA 92182-7700 USA. OpenContent (http://www.opencontent.org/opl.shtml) license de-\n" +
+                  "fines the copyright on this document.";
+
+            List<Character> characterList = null;
+            final char[] textArray = text.toCharArray();
+            @Override
+            protected int create() {
+               characterList = new ArrayList<>();
+               for (char c : textArray) {
+                  characterList.add(c);
+               }
+               return 1;
+            }
+         }.averageBytes());
+      }
+
+   public static void getFontSize(){
+      System.out.printf("The average size of an CharacterAndFont is %.1f bytes%n", new SizeCalculation() {
+         CharacterAndFont arial = null;
+         @Override
+         protected int create() {
+            arial = new CharacterAndFont('T',new Font("Arial", Font.BOLD, 12));
+            return 1;
+         }
+      }.averageBytes());
+   }
+
+}
