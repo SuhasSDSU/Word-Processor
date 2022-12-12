@@ -1,46 +1,91 @@
 package edu.sdsu.util;
 
 import edu.sdsu.docprocessor.CharacterAndFont;
-import edu.sdsu.util.SizeCalculation;
+import edu.sdsu.flyweight.CharacterFactory;
+import edu.sdsu.flyweight.FontFactory;
+import edu.sdsu.flyweight.TextCharacter;
 
-import java.awt.*;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-
 public class SizeCalculator {
-
-      public static void getObjectSize(){
-         System.out.printf("The average size of a Character array is %.1f bytes%n", new SizeCalculation() {
-           final String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
-                  "Fall Semester, 2018\n" +
-                  "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
-                  "Nov 19, 2019\n" +
-                  "Copyright ©, All rights reserved. 2019 SDSU & Roger Whitney, 5500 Campanile Drive, San\n" +
-                  "Diego, CA 92182-7700 USA. OpenContent (http://www.opencontent.org/opl.shtml) license de-\n" +
-                  "fines the copyright on this document.";
-
-            List<Character> characterList = null;
-            final char[] textArray = text.toCharArray();
-            @Override
-            protected int create() {
-               characterList = new ArrayList<>();
-               for (char c : textArray) {
-                  characterList.add(c);
-               }
-               return 1;
+   private static String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
+         "Fall Semester, 2018\n" +
+         "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
+         "Nov 19, 2019\n" +
+         "Copyright ©, All rights reserved. 2019 SDSU & Roger Whitney, 5500 Campanile Drive, San\n" +
+         "Diego, CA 92182-7700 USA. OpenContent (http://www.opencontent.org/opl.shtml) license de-\n" +
+         "fines the copyright on this document.";
+   final static char[] textArray = text.toCharArray();
+   public static void main(String[] args) {
+      getFontSize();
+      getCharacterFontSize();
+      getCharacterFactorySize();
+      getListCharacterSize();
+   }
+   /**
+    * Using this to get memory consumption by CharacterAndFont
+    */
+   public static int getCharacterFontSize(){
+      int characterFontSize = (int) new SizeCalculation() {
+         List<Character> characterList = null;
+         @Override
+         protected int create() {
+            characterList = new ArrayList<>();
+            for (char c : textArray) {
+               characterList.add(c);
             }
-         }.averageBytes());
-      }
+            return 1;
+         }
+      }.averageBytes();
+      return characterFontSize;
+   }
 
-   public static void getFontSize(){
-      System.out.printf("The average size of an CharacterAndFont is %.1f bytes%n", new SizeCalculation() {
+   /**
+    * Using this to get memory consumption by CharacterAndFont
+    */
+   public static int getFontSize(){
+      int fontSize = (int) new SizeCalculation() {
          CharacterAndFont arial = null;
          @Override
          protected int create() {
-            arial = new CharacterAndFont('T',new Font("Arial", Font.BOLD, 12));
+            arial = new CharacterAndFont('T', new Font("Arial", Font.BOLD, 12));
             return 1;
          }
-      }.averageBytes());
+      }.averageBytes();
+      return fontSize;
    }
 
+   /**
+    * Using this to get memory consumption by flyweight
+    */
+   public static int getCharacterFactorySize(){
+      int characterFactorySize = (int) new SizeCalculation(){
+         FontFactory fontFactory = null;
+         CharacterFactory characterFactory = null;
+         List<TextCharacter> characterList = null;
+         @Override
+         protected int create() {
+            Font timesNewRoman = new Font("TIMES NEW ROMAN", Font.ITALIC, 10);
+            characterList = new ArrayList<>();
+            TextCharacter character = new TextCharacter('a');
+            return 1;
+         }
+      }.averageBytes();
+      return characterFactorySize;
+   }
+
+   public static int getListCharacterSize(){
+   List<TextCharacter> characterList = null;
+      characterList = new ArrayList<>();
+      for (int i = 0; i < textArray.length; i++) {
+         CharacterFactory characterFactory = CharacterFactory.getCharacterFactoryInstance();
+         TextCharacter flyWeightCharacter = characterFactory.getFlyWeightCharacter(textArray[i]); //unicode
+         // need this avoid creation of new reference in the list pointing to same static flyweight character
+         if (!characterList.contains(flyWeightCharacter)) {
+            characterList.add(flyWeightCharacter);
+         }
+      }
+      return characterList.size();
+   }
 }

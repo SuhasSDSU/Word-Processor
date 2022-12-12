@@ -28,14 +28,11 @@ public abstract class SizeCalculation {
       Arrays.sort(sizes);
       return sizes[runs / 2];
    }
-
    protected long memoryUsed(Runtime runtime) {
       return runtime.totalMemory() - runtime.freeMemory();
    }
-
    protected int runs() {
       return 11;
    }
-
    protected abstract int create();
 }
