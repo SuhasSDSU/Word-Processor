@@ -7,11 +7,11 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NormalTextEditor {
-   public static void main(String args[]){
+public class NormalTextEditorTest {
+   public static int getMemoryConsumption(){
 
       System.out.println("~~~~~~~~~~~~~~~Without Flyweight~~~~~~~~~~~~~~~");
-      System.out.printf("The average size of NormalCharacterWithFont is %.10f bytes%n", new SizeCalculation() {
+      int textEditorSize = (int) new SizeCalculation() {
          final String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
                "Fall Semester, 2018\n" +
                "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
@@ -32,7 +32,8 @@ public class NormalTextEditor {
             }
             return 1;
          }
-      }.averageBytes());
+      }.averageBytes();
+      return textEditorSize;
    }
 
 }

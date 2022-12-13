@@ -21,7 +21,7 @@ public class SizeCalculator {
       getFontSize();
       getCharacterFontSize();
       getCharacterFactorySize();
-      getListCharacterSize();
+      getFlyweightListSize();
    }
    /**
     * Using this to get memory consumption by CharacterAndFont
@@ -38,6 +38,7 @@ public class SizeCalculator {
             return 1;
          }
       }.averageBytes();
+      System.out.println(characterFontSize);
       return characterFontSize;
    }
 
@@ -53,6 +54,7 @@ public class SizeCalculator {
             return 1;
          }
       }.averageBytes();
+      System.out.println("fontsize"+fontSize);
       return fontSize;
    }
 
@@ -72,10 +74,15 @@ public class SizeCalculator {
             return 1;
          }
       }.averageBytes();
+      System.out.println("characterFactory size"+characterFactorySize);
       return characterFactorySize;
    }
 
-   public static int getListCharacterSize(){
+   /**
+    * Used in the fly-weight testing
+    * @return
+    */
+   public static int getFlyweightListSize(){
    List<TextCharacter> characterList = null;
       characterList = new ArrayList<>();
       for (int i = 0; i < textArray.length; i++) {
@@ -85,6 +92,21 @@ public class SizeCalculator {
          if (!characterList.contains(flyWeightCharacter)) {
             characterList.add(flyWeightCharacter);
          }
+      }
+      return characterList.size();
+   }
+
+   /**
+    * Used to calculate the list size without using flyweight
+    * @return
+    */
+   public static int getListSize(){
+      List<TextCharacter> characterList = null;
+      characterList = new ArrayList<>();
+      for (int i = 0; i < textArray.length; i++) {
+         CharacterFactory characterFactory = CharacterFactory.getCharacterFactoryInstance();
+         TextCharacter flyWeightCharacter = characterFactory.getFlyWeightCharacter(textArray[i]); //unicode
+         characterList.add(flyWeightCharacter);
       }
       return characterList.size();
    }

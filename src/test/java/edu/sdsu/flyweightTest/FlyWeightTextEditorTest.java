@@ -10,11 +10,11 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlyWeightTextEditor {
-   public static void main(String args[]) {
+public class FlyWeightTextEditorTest {
+   public static int getMemoryConsumption() {
 
       System.out.println("~~~~~~~~~~~~~~~With Flyweight~~~~~~~~~~~~~~~");
-      System.out.printf("The average size of TotalSize is %.1f bytes%n", new SizeCalculation() {
+      int textEditorSize = (int) new SizeCalculation() {
          final String text = "CS 635 Advanced Object-Oriented Design & Programming\n" +
                "Fall Semester, 2018\n" +
                "Doc 17 Mediator, Flyweight, Facade, Demeter, Active Object\n" +
@@ -48,7 +48,7 @@ public class FlyWeightTextEditor {
             }
             return 1;
          }
-      }.averageBytes());
-
+      }.averageBytes();
+      return textEditorSize;
    }
 }
